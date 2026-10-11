@@ -1,15 +1,24 @@
+import os
 import random
 import shutil
 import cv2
 import numpy as np
 
-INPUT_IMAGE = r"krish.jpg"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Resolve input image (supporting both .jpeg and .jpg)
+if os.path.exists(os.path.join(SCRIPT_DIR, "krish.jpeg")):
+    INPUT_IMAGE = os.path.join(SCRIPT_DIR, "krish.jpeg")
+elif os.path.exists(os.path.join(SCRIPT_DIR, "krish.jpg")):
+    INPUT_IMAGE = os.path.join(SCRIPT_DIR, "krish.jpg")
+else:
+    INPUT_IMAGE = os.path.join(SCRIPT_DIR, "krish.jpeg")
 
 SAVE_IMAGES = True
-OUTPUT_IMAGE = r"output_clear_photo.png"
+OUTPUT_IMAGE = os.path.join(SCRIPT_DIR, "output_clear_photo.png")
 
 SAVE_NEON_SKETCH_TOO = True
-OUTPUT_NEON_IMAGE = r"output_neon_sketch.png"
+OUTPUT_NEON_IMAGE = os.path.join(SCRIPT_DIR, "output_neon_sketch.png")
 
 CANVAS_W, CANVAS_H = 1920, 1080
 FPS = 60
